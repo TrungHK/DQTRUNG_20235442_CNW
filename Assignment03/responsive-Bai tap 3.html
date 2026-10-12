@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Web Design Demo - Bài tập 3</title>
+    <style>
+        /* 1. Base Styles (Thiết lập chung cho mọi màn hình) */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f4f6f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto; /* Căn giữa */
+            padding: 40px 20px;
+        }
+
+        header.title-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        header.title-section h1 {
+            font-size: 2rem;
+            color: #1e293b;
+            margin-bottom: 8px;
+        }
+
+        header.title-section p {
+            color: #64748b;
+            font-size: 1rem;
+        }
+
+        .content {
+            display: flex;
+            flex-wrap: wrap; /* Cho phép các cột xuống dòng khi không đủ chỗ */
+            margin: -10px; /* Bù trừ margin của các cột */
+        }
+
+        .column {
+            padding: 24px;
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            margin: 10px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .column:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+        }
+
+        .column h3 {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .column p {
+            color: #475569;
+            font-size: 0.95rem;
+        }
+
+        /* Điểm nhấn màu sắc cho từng cột */
+        .column-pc {
+            border-top: 4px solid #3b82f6;
+        }
+        .column-pc h3 {
+            color: #1d4ed8;
+        }
+
+        .column-tablet {
+            border-top: 4px solid #10b981;
+        }
+        .column-tablet h3 {
+            color: #047857;
+        }
+
+        .column-mobile {
+            border-top: 4px solid #f59e0b;
+        }
+        .column-mobile h3 {
+            color: #b45309;
+        }
+
+        /* 2. Media Queries (Thiết kế cho các kích thước màn hình cụ thể) */
+
+        /* Màn hình máy tính để bàn (PC: >= 1024px) - Hiển thị 3 cột */
+        @media (min-width: 1024px) {
+            .column {
+                flex: 0 0 calc(33.333% - 20px);
+            }
+        }
+
+        /* Màn hình máy tính bảng (Tablet: 600px - 1023px) - Hiển thị 2 cột */
+        @media (min-width: 600px) and (max-width: 1023px) {
+            .column {
+                flex: 0 0 calc(50% - 20px);
+            }
+        }
+
+        /* Màn hình điện thoại di động (Mobile: < 600px) - Hiển thị 1 cột */
+        @media (max-width: 599px) {
+            .column {
+                flex: 0 0 calc(100% - 20px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="title-section">
+            <h1>Demo Giao Diện Responsive (Flexbox)</h1>
+            <p>Thay đổi kích thước cửa sổ trình duyệt (hoặc bật F12 Responsive Mode) để quan sát sự thay đổi số cột</p>
+        </header>
+
+        <div class="content">
+            <div class="column column-pc">
+                <h3>💻 Cột 1: PC (3 cột)</h3>
+                <p>Trên màn hình máy tính để bàn lớn (<strong>≥ 1024px</strong>), các khối này sẽ hiển thị <strong>ba cột</strong> nằm ngang.</p>
+            </div>
+            <div class="column column-tablet">
+                <h3>📱 Cột 2: Tablet (2 cột)</h3>
+                <p>Trên màn hình máy tính bảng (<strong>600px - 1023px</strong>), các khối này sẽ hiển thị <strong>hai cột</strong> nằm ngang.</p>
+            </div>
+            <div class="column column-mobile">
+                <h3>📲 Cột 3: Mobile (1 cột)</h3>
+                <p>Trên màn hình điện thoại di động (<strong>&lt; 600px</strong>), các khối này sẽ hiển thị <strong>một cột</strong> xếp chồng theo chiều dọc.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
